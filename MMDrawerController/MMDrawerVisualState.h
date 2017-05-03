@@ -22,6 +22,7 @@
 #import <Foundation/Foundation.h>
 #import "MMDrawerController.h"
 
+NS_ASSUME_NONNULL_BEGIN
 /**
  `MMDrawerVisualState` provides prebuilt visual state update blocks that can be used in the callback block of `MMDrawerController` for drawer animation.
  */
@@ -59,3 +60,4 @@
 +(MMDrawerControllerDrawerVisualStateBlock)parallaxVisualStateBlockWithParallaxFactor:(CGFloat)parallaxFactor;
 
 @end
+NS_ASSUME_NONNULL_END
