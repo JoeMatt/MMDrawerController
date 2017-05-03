@@ -92,6 +92,8 @@ typedef NS_ENUM(NSInteger, MMDrawerOpenCenterInteractionMode) {
     MMDrawerOpenCenterInteractionModeNavigationBarOnly,
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class  MMDrawerController;
 typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * drawerController, MMDrawerSide drawerSide, CGFloat percentVisible);
 
@@ -113,14 +115,14 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  
  The size of this view controller is managed within this class, and is automatically set to the appropriate size based on the `maximumLeftDrawerWidth`. Do not modify the frame externally.
  */
-@property (nonatomic, strong) UIViewController * leftDrawerViewController;
+@property (nonatomic, strong, nullable) UIViewController * leftDrawerViewController;
 
 /**
  The right drawer view controller. 
  
  The size of this view controller is managed within this class, and is automatically set to the appropriate size based on the `maximumRightDrawerWidth`. Do not modify the frame externally.
  */
-@property (nonatomic, strong) UIViewController * rightDrawerViewController;
+@property (nonatomic, strong, nullable) UIViewController * rightDrawerViewController;
 
 /**
  The maximum width of the `leftDrawerViewController`. 
@@ -226,7 +228,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  
  By default, this is set to the systme default (opaque black).
  */
-@property (nonatomic, strong) UIColor * shadowColor;
+@property (nonatomic, strong, nullable) UIColor * shadowColor;
 
 /**
  The flag determining if a custom background view should appear beneath the status bar, forcing the child content to be drawn lower than the status bar.
@@ -279,7 +281,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  
  @return The newly-initialized drawer container view controller.
  */
--(instancetype)initWithCenterViewController:(UIViewController *)centerViewController leftDrawerViewController:(UIViewController *)leftDrawerViewController rightDrawerViewController:(UIViewController *)rightDrawerViewController;
+-(instancetype)initWithCenterViewController:(UIViewController *)centerViewController leftDrawerViewController:(UIViewController * _Nullable)leftDrawerViewController rightDrawerViewController:(UIViewController * _Nullable)rightDrawerViewController;
 
 /**
  Creates and initializes an `MMDrawerController` object with the specified center view controller, left drawer view controller.
@@ -315,7 +317,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  @param completion The block that is called when the toggle is complete, or if no toggle took place at all.
  
  */
--(void)toggleDrawerSide:(MMDrawerSide)drawerSide animated:(BOOL)animated completion:(void(^)(BOOL finished))completion;
+-(void)toggleDrawerSide:(MMDrawerSide)drawerSide animated:(BOOL)animated completion:(void(^ _Nullable)(BOOL finished))completion;
 
 /**
  Closes the open drawer.
@@ -324,7 +326,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  @param completion The block that is called when the close is complete
  
  */
--(void)closeDrawerAnimated:(BOOL)animated completion:(void(^)(BOOL finished))completion;
+-(void)closeDrawerAnimated:(BOOL)animated completion:(void(^ _Nullable)(BOOL finished))completion;
 
 /**
  Opens the `drawer` passed in.
@@ -334,7 +336,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  @param completion The block that is called when the toggle is open.
  
  */
--(void)openDrawerSide:(MMDrawerSide)drawerSide animated:(BOOL)animated completion:(void(^)(BOOL finished))completion;
+-(void)openDrawerSide:(MMDrawerSide)drawerSide animated:(BOOL)animated completion:(void(^ _Nullable)(BOOL finished))completion;
 
 ///---------------------------------------
 /// @name Setting a new Center View Controller
@@ -350,7 +352,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  @param completion The block called when the animation is finsihed.
  
  */
--(void)setCenterViewController:(UIViewController *)centerViewController withCloseAnimation:(BOOL)closeAnimated completion:(void(^)(BOOL finished))completion;
+-(void)setCenterViewController:(UIViewController *)centerViewController withCloseAnimation:(BOOL)closeAnimated completion:(void(^ _Nullable)(BOOL finished))completion;
 
 /**
  Sets the new `centerViewController`. 
@@ -362,7 +364,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  @param completion The block called when the animation is finsihed.
  
  */
--(void)setCenterViewController:(UIViewController *)newCenterViewController withFullCloseAnimation:(BOOL)fullCloseAnimated completion:(void(^)(BOOL finished))completion;
+-(void)setCenterViewController:(UIViewController *)newCenterViewController withFullCloseAnimation:(BOOL)fullCloseAnimated completion:(void(^ _Nullable)(BOOL finished))completion;
 
 ///---------------------------------------
 /// @name Animating the Width of a Drawer
@@ -378,7 +380,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  @param completion The block called when the animation is finished.
  
  */
--(void)setMaximumLeftDrawerWidth:(CGFloat)width animated:(BOOL)animated completion:(void(^)(BOOL finished))completion;
+-(void)setMaximumLeftDrawerWidth:(CGFloat)width animated:(BOOL)animated completion:(void(^ _Nullable)(BOOL finished))completion;
 
 /**
  Sets the maximum width of the right drawer view controller. 
@@ -390,7 +392,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  @param completion The block called when the animation is finished.
  
  */
--(void)setMaximumRightDrawerWidth:(CGFloat)width animated:(BOOL)animated completion:(void(^)(BOOL finished))completion;
+-(void)setMaximumRightDrawerWidth:(CGFloat)width animated:(BOOL)animated completion:(void(^ _Nullable)(BOOL finished))completion;
 
 ///---------------------------------------
 /// @name Previewing a Drawer
@@ -403,7 +405,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  @param completion The block called when the animation is finsihed.
  
  */
--(void)bouncePreviewForDrawerSide:(MMDrawerSide)drawerSide completion:(void(^)(BOOL finished))completion;
+-(void)bouncePreviewForDrawerSide:(MMDrawerSide)drawerSide completion:(void(^ _Nullable)(BOOL finished))completion;
 
 /**
  Bounce preview for the specified `drawerSide`.
@@ -413,7 +415,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  @param completion The block called when the animation is finsihed.
  
  */
--(void)bouncePreviewForDrawerSide:(MMDrawerSide)drawerSide distance:(CGFloat)distance completion:(void(^)(BOOL finished))completion;
+-(void)bouncePreviewForDrawerSide:(MMDrawerSide)drawerSide distance:(CGFloat)distance completion:(void(^ _Nullable)(BOOL finished))completion;
 
 ///---------------------------------------
 /// @name Custom Drawer Animations
@@ -432,7 +434,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  
  @param drawerVisualStateBlock A block object to be called that allows the implementer to update visual state properties on the drawer. `percentVisible` represents the amount of the drawer space that is current visible, with drawer space being defined as the edge of the screen to the maxmimum drawer width. Note that you do have access to the drawerController, which will allow you to update things like the anchor point of the side drawer layer.
  */
--(void)setDrawerVisualStateBlock:(void(^)(MMDrawerController * drawerController, MMDrawerSide drawerSide, CGFloat percentVisible))drawerVisualStateBlock;
+-(void)setDrawerVisualStateBlock:(void(^ _Nullable)(MMDrawerController * drawerController, MMDrawerSide drawerSide, CGFloat percentVisible))drawerVisualStateBlock;
 
 ///---------------------------------------
 /// @name Gesture Completion Handling
@@ -445,7 +447,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  
  @param gestureCompletionBlock A block object to be called that allows the implementer be notified when a gesture action has been completed.
  */
--(void)setGestureCompletionBlock:(void(^)(MMDrawerController * drawerController, UIGestureRecognizer * gesture))gestureCompletionBlock;
+-(void)setGestureCompletionBlock:(void(^ _Nullable)(MMDrawerController * drawerController, UIGestureRecognizer * gesture))gestureCompletionBlock;
 
 ///---------------------------------------
 /// @name Custom Gesture Handler
@@ -460,6 +462,8 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  
  @param gestureShouldRecognizeTouchBlock A block object to be called to determine if the given `touch` should be recognized by the given gesture.
  */
--(void)setGestureShouldRecognizeTouchBlock:(BOOL(^)(MMDrawerController * drawerController, UIGestureRecognizer * gesture, UITouch * touch))gestureShouldRecognizeTouchBlock;
+-(void)setGestureShouldRecognizeTouchBlock:(BOOL(^ _Nullable)(MMDrawerController * drawerController, UIGestureRecognizer * gesture, UITouch * touch))gestureShouldRecognizeTouchBlock;
 
 @end
+
+NS_ASSUME_NONNULL_END

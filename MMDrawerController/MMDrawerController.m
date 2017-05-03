@@ -135,9 +135,9 @@ static NSString *MMDrawerOpenSideKey = @"MMDrawerOpenSide";
 @property (nonatomic, strong) UIView * dummyStatusBarView;
 
 @property (nonatomic, assign) CGRect startingPanRect;
-@property (nonatomic, copy) MMDrawerControllerDrawerVisualStateBlock drawerVisualState;
-@property (nonatomic, copy) MMDrawerGestureShouldRecognizeTouchBlock gestureShouldRecognizeTouch;
-@property (nonatomic, copy) MMDrawerGestureCompletionBlock gestureCompletion;
+@property (nonatomic, copy, nullable) MMDrawerControllerDrawerVisualStateBlock drawerVisualState;
+@property (nonatomic, copy, nullable) MMDrawerGestureShouldRecognizeTouchBlock gestureShouldRecognizeTouch;
+@property (nonatomic, copy, nullable) MMDrawerGestureCompletionBlock gestureCompletion;
 @property (nonatomic, assign, getter = isAnimatingDrawer) BOOL animatingDrawer;
 
 @end

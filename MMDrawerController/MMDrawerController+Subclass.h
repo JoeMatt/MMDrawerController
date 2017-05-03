@@ -26,6 +26,8 @@
  None of these methods are meant to be called by non-subclasses of `MMDrawerController`.
  */
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface MMDrawerController (Subclass)
 ///---------------------------------------
 /// @name Gesture Interaction
@@ -109,3 +111,5 @@
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration __attribute((objc_requires_super));
 
 @end
+
+NS_ASSUME_NONNULL_END
