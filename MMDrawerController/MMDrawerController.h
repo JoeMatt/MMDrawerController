@@ -108,7 +108,7 @@ typedef void (^MMDrawerControllerDrawerVisualStateBlock)(MMDrawerController * dr
  
  This can only be set via the init methods, as well as the `setNewCenterViewController:...` methods. The size of this view controller will automatically be set to the size of the drawer container view controller, and it's position is modified from within this class. Do not modify the frame externally.
  */
-@property (nonatomic, strong) UIViewController * centerViewController;
+@property (nonatomic, strong, nullable) UIViewController * centerViewController;
 
 /**
  The left drawer view controller. 
