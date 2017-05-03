@@ -1065,13 +1065,7 @@ static NSString *MMDrawerOpenSideKey = @"MMDrawerOpenSide";
 -(void)panGestureCallback:(UIPanGestureRecognizer *)panGesture{
     switch (panGesture.state) {
         case UIGestureRecognizerStateBegan:{
-            if(self.animatingDrawer){
-                [panGesture setEnabled:NO];
-                break;
-            }
-            else {
-                self.startingPanRect = self.centerContainerView.frame;
-            }
+        	self.startingPanRect = self.centerContainerView.frame;
         }
         case UIGestureRecognizerStateChanged:{
             self.view.userInteractionEnabled = NO;
@@ -1371,6 +1365,14 @@ static inline CGFloat originXForDrawerOriginAndTargetOriginOffset(CGFloat origin
 }
 
 #pragma mark - UIGestureRecognizerDelegate
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (self.isAnimatingDrawer) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
     
     if(self.openSide == MMDrawerSideNone){
